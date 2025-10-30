@@ -1,0 +1,245 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  border: none;
+  outline: none;
+  font-family: "Poppins", "Segoe UI", sans-serif;
+}
+
+/* Background with gradient and blur */
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #3b82f6, #9333ea);
+  background-attachment: fixed;
+}
+
+/* Main container with glassmorphism effect */
+.container {
+  width: 400px;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  padding: 32px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+  color: #fff;
+  transition: all 0.3s ease;
+}
+
+/* Search box */
+.search-box {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 14px;
+  padding: 6px 10px;
+}
+
+.search-box input {
+  width: 85%;
+  font-size: 18px;
+  color: #fff;
+  background: transparent;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.search-box input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.search-box button {
+  width: 44px;
+  height: 44px;
+  background: linear-gradient(135deg, #60a5fa, #a855f7);
+  color: #fff;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 20px;
+  transition: transform 0.2s ease, background 0.3s ease;
+}
+
+/* Weather section */
+.weather-body {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-block: 20px;
+  text-align: center;
+  animation: fadeIn 0.8s ease-in-out forwards;
+}
+
+.weather-body img {
+  width: 60%;
+  filter: drop-shadow(0 8px 12px rgba(0, 0, 0, 0.3));
+}
+
+/* Temperature & description */
+.weather-box {
+  margin-block: 20px;
+  text-align: center;
+}
+
+.weather-box .temperature {
+  font-size: 52px;
+  font-weight: 800;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.weather-box .temperature sup {
+  font-size: 20px;
+  position: absolute;
+  font-weight: 600;
+}
+
+.weather-box .description {
+  font-size: 22px;
+  font-weight: 600;
+  text-transform: capitalize;
+  color: #e0e0e0;
+  transition: color 0.3s ease;
+}
+
+/* Details (humidity & wind) */
+.weather-details {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+
+.humidity, .wind {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.weather-details i {
+  font-size: 32px;
+  color: #a5b4fc;
+}
+
+.weather-details .text {
+  font-size: 16px;
+}
+
+.text span {
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+}
+
+/* Location not found */
+.location-not-found {
+  margin-top: 20px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  animation: fadeIn 0.6s ease;
+}
+
+.location-not-found h1 {
+  font-size: 20px;
+  color: #f87171;
+  margin-block-end: 15px;
+}
+
+.location-not-found img {
+  width: 80%;
+  filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.25));
+}
+
+/* 🔹 Smooth transitions for all interactive elements */
+button,
+input,
+.container,
+.weather-box,
+.weather-details i {
+  transition: all 0.3s ease;
+}
+
+/* 🔹 Search Input Hover & Focus */
+.search-box input:hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.search-box input:focus {
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.4);
+}
+
+/* 🔹 Search Button Hover */
+.search-box button:hover {
+  transform: scale(1.15);
+  background: linear-gradient(135deg, #2563eb, #9333ea);
+  box-shadow: 0 0 10px rgba(147, 51, 234, 0.6);
+}
+
+/* 🔹 Container Hover (slight lift-up effect) */
+.container:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+}
+
+/* 🔹 Weather Info Hover */
+.weather-box .temperature:hover {
+  color: #a5b4fc;
+  transform: scale(1.05);
+}
+
+.weather-box .description:hover {
+  color: #fff;
+  letter-spacing: 1px;
+}
+
+/* 🔹 Weather Icons Hover */
+.weather-details i:hover {
+  transform: rotate(12deg) scale(1.2);
+  color: #fff;
+}
+
+/* 🔹 Location Not Found Hover */
+.location-not-found:hover img {
+  transform: scale(1.05);
+}
+
+/* 🔹 Weather Card Appear Animation */
+.weather-body {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+/* 🔹 Fade-in Up Animation */
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 🔹 Fade-in Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 🌐 Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
